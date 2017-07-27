@@ -1,24 +1,31 @@
 <template>
   <div class="pptList">
      <a href="javascript:;" v-on:click='ckFn'>点击</a>
+    <p v-bind='count'>{{doneObj}}</p>
   </div>
 </template>
 <script>
- import {mapGetters,mapState} from 'vuex';
+ import {mapGetters,mapState,mapMutations,mapActions} from 'vuex';
 export default {
   data () {
     return {
         
     }
   },
-  computed: mapState ({
-        count: state => state.count,
-        countAlias: 'count',    // 别名 `count` 等价于 state => state.count
-    }),
-  methods : {
-    ckFn (){
-      console.log(this.$store.state.count);
+  computed: {
+    ...mapState ([
+       'count'
+    ]),
+    ...mapGetters(['doneObj','doneAny']),  //利用扩展运算符把对象加载在computed里面
+    chage :()=>{
+      return this.count;
     }
+  },
+  methods : {
+    ...mapActions(['addCount']),
+    ckFn (){
+      this.addCount();
+    } 
   }
 }
 

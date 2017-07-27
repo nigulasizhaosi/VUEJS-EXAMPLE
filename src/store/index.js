@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import getters from './getters'
+import mutations from './mutations'
+import actions from './actions'
+
 Vue.use(Vuex);
 /*
 const state = {
@@ -10,6 +14,16 @@ const state = {
 */
 export default new Vuex.Store({
 	state : {
-		count : 0
-	}
+		count : [{
+			name : 'xiaoqiang',
+			done : true
+		},{
+			name : 'xiaohong',
+			done : false
+		}]
+	},
+	getters,
+	mutations,
+	actions 
 })
+1233 

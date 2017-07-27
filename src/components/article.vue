@@ -3,10 +3,12 @@
       <h1>{{listObj.title}}</h1>
       <p class="inf"><span>{{listObj.author}}</span><span>{{listObj.publish}}</span></p>
       <div class="content">{{listObj.content}}</div>
+      <div v-bind:attr-data='count[0].name'>{{count[0].name}}</div>
   </div>
 </template>
 
 <script>
+import {mapGetters,mapState,mapMutations} from 'vuex'
 export default {
   name: 'article',
   data () {
@@ -22,6 +24,9 @@ export default {
         src : '2323'
       }
     }
+  },
+  computed : {
+    ...mapState(['count'])
   }
 }
 </script>

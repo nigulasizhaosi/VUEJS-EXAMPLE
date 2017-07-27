@@ -34,6 +34,8 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: () => {},
   heartbeat: 2000
 })
+var router = require('./node/router'); //my self router
+router(app);
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
